@@ -94,7 +94,7 @@ const validationSchema = Yup.object().shape({
               </div>
 
               <input
-                className="border-none outline-none placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500  w-full"
+                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500  w-full"
                 placeholder="Full Name"
                 type="text"
                 name="fullname"
@@ -118,7 +118,7 @@ const validationSchema = Yup.object().shape({
               </div>
 
               <input
-                className="border-none outline-none placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500   w-full"
+                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500   w-full"
                 placeholder="Enter your E-mail Addresss"
                 type="text"
                 name="email"
@@ -144,7 +144,7 @@ const validationSchema = Yup.object().shape({
               </div>
 
               <input
-                className="border-none outline-none placeholder:text-[13px] text-xs p-2 placeholder:text-gray-200 text-gray-500   w-full"
+                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-gray-200 text-gray-500   w-full"
                 placeholder="Enter Phone Number"
                 type="text"
                 name="phoneNumber"
@@ -167,7 +167,7 @@ const validationSchema = Yup.object().shape({
               </div>
 
               <input
-                className="border-none outline-none placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500  w-full"
+                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-gray-300 text-gray-500  w-full"
                 placeholder="Password"
                 type="password"
                 name="password"
