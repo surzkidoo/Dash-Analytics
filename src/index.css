@@ -38,7 +38,7 @@
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  animation: spin 2s linear infinite;
+  animation: spin 200ms linear infinite;
 }
 
 @keyframes spin {
@@ -53,6 +53,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   background-color: white;
+}
+
+input{
+  background-color: white !important;
 }
 
 code {

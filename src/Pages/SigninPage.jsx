@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import Loader from '../Components/Loader';
 import { signInUser } from '../Api/SignIn';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setUser } from '../features/Authslice';
 
 function SigninPage() {
@@ -96,7 +96,7 @@ function SigninPage() {
               </div>
 
               <input
-                className="border-none outline-none placeholder:text-[13px] text-xs p-2 placeholder:text-gray-200 text-gray-500   w-full"
+                className="border-none outline-none placeholder:text-[13px] text-inbbxs p-2 placeholder:text-gray-200 text-gray-500   w-full"
                 placeholder="Enter Phone Number"
                 type="text"
                 name="phoneNumber"
@@ -136,7 +136,7 @@ function SigninPage() {
           </button>
 
           <div className="flex gap-2">
-            <p className="text-[13px] text-gray-700"> Don&apos;t have an Account?</p> <span className='text-[13px] text-violet-900' >Sign Up</span>
+            <p className="text-[13px] text-gray-700"> Don&apos;t have an Account?</p> <Link to='/sign-up' className='text-[13px] text-violet-900' >Sign Up </Link bbbbbbbbbbbb>
 
           </div>
         </form>
