@@ -8,7 +8,7 @@ export default function Sidebar(props) {
 
   return (
 
-    <div style={{zIndex:900}} className={`w-[250px]  bg-violet-500 left-0 xl:static border-r h-screenbb fixed  p-2 shadow  ${!props.sidebar && 'hidden'}  xl:block`}>
+    <div style={{zIndex:900}} className={`w-[250px]  bg-violet-500 left-0 xl:static border-r h-screen fixed  p-2 shadow  ${!props.sidebar && 'hidden'}  xl:block`}>
 
       <div className=''>
  <div className='text-lg font-bold pl-4 mt-3 justify-between flex items-center'><div>
