@@ -96,7 +96,7 @@ function SigninPage() {
               </div>
 
               <input
-                className="border-none outline-none bg-white placeholder:text-[13px] text-inbbxs p-2 placeholder:text-gray-200 text-gray-500   w-full"
+                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-gray-200 text-gray-500   w-full"
                 placeholder="Enter Phone Number"
                 type="text"
                 name="phoneNumber"

@@ -80,7 +80,7 @@ function DashbaordPage() {
                     <div className="flex flex-col  w-[500px]  border p-2 rounded-md items-center">
                         <div className="flex flex-row w-full p-1  justify-between items-center">
                             <p className="text-gray-700  text-violet-500 text-[16px]" >Number of Users</p>
-                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">17k</h1>
+                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">17,000</h1>
                         </div>
 
                         <Chart
@@ -97,13 +97,13 @@ function DashbaordPage() {
                     <div className="flex flex-col  w-[500px]  border p-2 rounded-md items-center">
                         <div className="flex flex-row w-full p-1  justify-between items-center">
                             <p className="text-gray-700  text-violet-500 text-[16px]" >Number of Transactions</p>
-                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">200k</h1>
+                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">200,000</h1>
                         </div>
 
                         <Chart
                         options={data.options}
                         series={data.series}
-                        type="area"
+                        type="line"
                         className ='m-0 p-0'
                         height='200px'
                         width='100%'
@@ -115,15 +115,15 @@ function DashbaordPage() {
                     <div className="flex flex-col  w-[500px]  border p-2 rounded-md items-center">
                         <div className="flex flex-row w-full p-1  justify-between items-center">
                             <p className="text-gray-700  text-violet-500 text-[16px]" >Amount In Users Wallet</p>
-                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">17k</h1>
+                            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">1,200,000</h1>
                         </div>
 
                         <Chart
                         options={data.options}
                         series={data.series}
-                        type="line"
-                        className ='m-0 p-0'
-                        height='200px'
+                        type="area"
+                        className ='m-0 p-0 '
+                        height='300px'
                         width='100%'
                         />
 
