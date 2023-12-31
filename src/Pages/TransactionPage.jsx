@@ -36,12 +36,12 @@ export default function TransactionPage() {
           />
           <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-base-300 rounded-box overflow-x-scroll lg:overflow-x-auto p-3"
+            className="tab-content bg-grey-100 border-base-300 rounded-box overflow-x-scroll lg:overflow-x-auto p-3"
           >
             <div className="flex flex-col bg-white gap-4 mt-2">
-                            <details className="dropdown bg-white dropdown-end self-end">
+                            <details className="dropdown dropdown-end self-end">
                 <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white">Filter Result <AiFillCaretDown/> </summary>
-                <div className="p-2 border flex gap-1.5 flex w-[300px]  shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[1]  rounded-box w-52">
                     <div className="flex gap-3 ">
                         <p className="text-[12px] text-purple-500">Today</p>
                         <p className="text-[12px] text-gray-500">YesterDay</p>

@@ -11,7 +11,7 @@ function DashbaordTemplete() {
 
 
   return (
-    <div className="flex flex-row  w-full h-screen overflow-hidden">
+    <div className="flex flex-row  w-full h-screen ">
 
       <div className="flex flex-1">
         <Sidebar  sidebar={sidebar} setSidebar={setSidebar} />
