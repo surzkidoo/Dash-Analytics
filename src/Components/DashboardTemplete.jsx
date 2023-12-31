@@ -21,7 +21,7 @@ function DashbaordTemplete() {
         <div>
           <Header sidebar={sidebar} setSidebar={setSidebar} />
         </div>
-        <div className="px-0 md:px-4 py-2 flex gap-10 h-full flex-wrap flex-col bg-gray-100">
+        <div className="sm:px-2 md:px-4  py-2 flex gap-10 h-full flex-wrap flex-col bg-gray-100">
         <Outlet/>
         </div>
       </div>
