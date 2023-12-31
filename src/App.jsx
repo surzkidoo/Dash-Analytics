@@ -8,6 +8,9 @@ import { store } from './store';
 import SignupPage from "./Pages/SignupPage";
 import SigninPage from "./Pages/SigninPage";
 import DashbaordPage from "./Pages/DashbaordPage";
+import { ProtectedRoute } from "./Components/PrivateRoute";
+import DashbaordTemplete from "./Components/DashboardTemplete";
+import TransactionPage from "./Pages/TransactionPage";
 
 
 const queryClient = new QueryClient()
@@ -21,7 +24,12 @@ function App() {
           <Routes>
           <Route path="/sign-up" element={<SignupPage/>} />
           <Route path="/sign-in" index element={<SigninPage/>} />
-            <Route path="/"  element={<DashbaordPage/>} />
+          <Route element={<ProtectedRoute  element={<DashbaordTemplete/>} />}>
+          <Route path="/"   element={<DashbaordPage/>} />
+          <Route path="dashboard/transaction"   element={<TransactionPage/>} />
+
+          </Route>
+          
             
           </Routes>
       
