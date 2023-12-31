@@ -44,7 +44,7 @@ export default function Sidebar(props) {
 
       </NavLink>
 
-      <NavLink to='/log-out'  className={({isActive})=>isActive? activeLink : normalLink}>
+      <NavLink to='/dashboard/user'  className={({isActive})=>isActive? activeLink : normalLink}>
       <div>
             <AiOutlineUser size={20}/>
         </div>

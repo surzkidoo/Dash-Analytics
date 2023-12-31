@@ -13,7 +13,7 @@ export default function TransactionPage() {
 
     useEffect(() => {
         if (analyticQuery.isSuccess) {
-          setTransactionSuccess((prev) => [
+          setTransactionSuccess(() => [
             ...analyticQuery.data.data['User List of succesful transaction yesterday'],
           ]);
         }

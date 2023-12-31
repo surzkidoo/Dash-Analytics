@@ -11,6 +11,7 @@ import DashbaordPage from "./Pages/DashbaordPage";
 import { ProtectedRoute } from "./Components/PrivateRoute";
 import DashbaordTemplete from "./Components/DashboardTemplete";
 import TransactionPage from "./Pages/TransactionPage";
+import UserPage from "./Pages/UserPage";
 
 
 const queryClient = new QueryClient()
@@ -27,6 +28,8 @@ function App() {
           <Route element={<ProtectedRoute  element={<DashbaordTemplete/>} />}>
           <Route path="/"   element={<DashbaordPage/>} />
           <Route path="dashboard/transaction"   element={<TransactionPage/>} />
+          <Route path="dashboard/user"   element={<UserPage/>} />
+
 
           </Route>
           
