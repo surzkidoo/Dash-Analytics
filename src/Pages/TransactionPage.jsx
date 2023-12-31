@@ -25,7 +25,7 @@ export default function TransactionPage() {
       {/* <p>TransactionPage</p> */}
 
       <div className="bg-white w-full p-4 rounded-sm">
-        <div role="tablist" className="tabs  overflow-hidden  tabs-lifted">
+        <div role="tablist" className="tabs    tabs-lifted">
           <input
             type="radio"
             name="my_tabs_2"
@@ -36,12 +36,12 @@ export default function TransactionPage() {
           />
           <div
             role="tabpanel"
-            className="tab-content bg-grey-100 border-base-300 rounded-box overflow-x-scroll lg:overflow-x-auto p-3"
+            className="tab-content bg-grey-100 border-base-300 rounded-box overflow-x-scroll  p-3"
           >
             <div className="flex flex-col bg-white gap-4 mt-2">
                             <details className="dropdown dropdown-end self-end">
                 <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white">Filter Result <AiFillCaretDown/> </summary>
-                <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[1]  rounded-box w-52">
+                <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[10]  rounded-box w-52">
                     <div className="flex gap-3 ">
                         <p className="text-[12px] text-purple-500">Today</p>
                         <p className="text-[12px] text-gray-500">YesterDay</p>
@@ -57,7 +57,7 @@ export default function TransactionPage() {
                     </div>
 
                     <div className="w-full flex flex-col gap-1">
-                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold ">Transaction Type</label>
+                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold">Transaction Type</label>
                         <div className="flex w-full ">
                         <select className="border p-2 text-[13px] w-full">
                             <option className="">Payout</option>
@@ -67,7 +67,7 @@ export default function TransactionPage() {
                     </div>
 
 
-                    <div className="btn btn-sm text-white p-2 font-normal hover:bg-purple-400 text-[13px] bg-purple-500">
+                    <div className="btn btn-sm text-white p-2 px-4 font-normal hover:bg-purple-400 text-[13px] bg-purple-500">
                         Filter
                     </div>
                 </div>
@@ -122,12 +122,12 @@ export default function TransactionPage() {
           />
             <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-base-300 rounded-box p-3  overflow-x-scroll lg:overflow-x-auto"
+            className="tab-content bg-grey-100 border-base-300 rounded-box overflow-x-scroll  p-3"
           >
-            <div className="flex bg-white flex-col gap-4 mt-2">
-                            <details className="dropdown bg-white dropdown-end self-end">
-                <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white ">Filter Result <AiFillCaretDown/> </summary>
-                <div className="p-2 border flex gap-1.5  bg-white flex w-[300px]  shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <div className="flex flex-col bg-white gap-4 mt-2">
+                            <details className="dropdown dropdown-end self-end">
+                <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white">Filter Result <AiFillCaretDown/> </summary>
+                <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[10]  rounded-box w-52">
                     <div className="flex gap-3 ">
                         <p className="text-[12px] text-purple-500">Today</p>
                         <p className="text-[12px] text-gray-500">YesterDay</p>
@@ -138,22 +138,22 @@ export default function TransactionPage() {
                         <label htmlFor="" className="text-gray-900 text-[14px] font-bold ">Custom Date Range</label>
                         <div className="flex w-full ">
                         <input type="date" placeholder="from" className="w-full text-gray-900 p-2 border text-[13px]" />
-                        <input type="date" placeholder="to" className="w-full text-gray-900  p-2 border text-[13px]" />
+                        <input type="date" placeholder="to" className="w-full text-gray-900 p-2 border text-[13px]" />
                         </div>
                     </div>
 
-                  
-
                     <div className="w-full flex flex-col gap-1">
-                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold ">Transaction Type</label>
+                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold">Transaction Type</label>
                         <div className="flex w-full ">
                         <select className="border p-2 text-[13px] w-full">
                             <option className="">Payout</option>
                         </select>
                         </div>
+
                     </div>
 
-                    <div className="btn btn-sm text-white p-2 font-normal hover:bg-purple-400 text-[13px] bg-purple-500">
+
+                    <div className="btn btn-sm text-white p-2 px-4 font-normal hover:bg-purple-400 text-[13px] bg-purple-500">
                         Filter
                     </div>
                 </div>
@@ -181,7 +181,7 @@ export default function TransactionPage() {
                         return (
                         <tr key={tran.TxRef} className="p-1">
                         <th>{index+1}</th>
-                        <td>{tran.TxRef}</td>
+                        <td className="word-break">{tran.TxRef}</td>
                         <td>{tran.accountname}</td>
                         <td>{tran.amount}</td>
                         <td>{tran.transactionType}</td>
