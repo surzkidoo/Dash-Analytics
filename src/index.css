@@ -31,6 +31,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 }
 .loader {
   border: 8px solid #f3f3f3; /* Light grey */

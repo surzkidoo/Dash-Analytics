@@ -14,8 +14,8 @@ export default function Summary({name,number,icon,color}) {
     </div>
 
     <div className="flex flex-col">
-        <p className="text-gray-400 text-[10px]">{name}</p>
-        <p className="text-gray-900">{number}</p>
+        <p className="text-gray-400 text-[11px]">{name}</p>
+        <p className="text-gray-900 font-semibold">{number}</p>
     </div>
 
   </div>

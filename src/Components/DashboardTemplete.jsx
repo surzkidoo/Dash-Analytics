@@ -17,8 +17,8 @@ function DashbaordTemplete() {
         <Sidebar  sidebar={sidebar} setSidebar={setSidebar} />
       </div>
 
-      <div className="w-full h-full overflow-scroll">
-        <div>
+      <div className="w-full min-h-screen flex flex-col ">
+        <div className="h-[74px]">
           <Header sidebar={sidebar} setSidebar={setSidebar} />
         </div>
         <div className="sm:px-2 md:px-4  py-2 flex gap-10 h-full flex-wrap flex-col bg-gray-100">

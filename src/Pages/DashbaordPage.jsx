@@ -14,6 +14,7 @@ import {
   AiOutlineMore,
   AiOutlinePaperClip,
   AiOutlineTransaction,
+  AiOutlineUser,
 } from "react-icons/ai";
 import {
   BsCash,
@@ -138,9 +139,8 @@ function DashbaordPage() {
     <Loader />
   ) : (
     <div className="px-0 md:px-4 py-2 flex gap-10 flex-wrap flex-col bg-gray-100">
-      {console.log(analyticQuery.data)}
 
-      <div className="flex gap-4 flex-col md:flex-row flex-md-wrap">
+      <div className="flex gap-4 p-4 md:p-0 flex-col md:flex-row flex-md-wrap">
         <Summary
           number={analyticQuery.data.data[
             "Life time, Total Number of Transsaction request for earnings, payout, and error"
@@ -152,6 +152,16 @@ function DashbaordPage() {
 
         <Summary
           number={analyticQuery.data.data[
+            "Number of Users"
+          ].toLocaleString()}
+          name="Total Number of Users"
+          color="bg-yellow-100"
+          icon={<AiOutlineUser className="text-yellow-500" size={24} />}
+        />
+
+
+        <Summary
+          number={analyticQuery.data.data[
             "Number of Earnings request"
           ].toLocaleString()}
           name="Total Number of Earnings request"
@@ -159,6 +169,7 @@ function DashbaordPage() {
           icon={<AiOutlineTransaction className="text-blue-500" size={24} />}
         />
 
+          
         <Summary
           number={analyticQuery.data.data[
             "Total number of payout transaction"
@@ -171,14 +182,14 @@ function DashbaordPage() {
       
       </div>
 
-      <div className="flex  gap-4 flex-col md:flex-row flex-wrap">
+      <div className="flex p-4 md:p-0  gap-4 flex-col md:flex-row flex-wrap">
         <div className="flex flex-col bg-white   border p-2 rounded-md items-center">
           <div className="flex flex-row w-full p-1  justify-between items-center">
             <p className="text-gray-700  text-violet-500 text-[16px]">
               Number of Users
             </p>
-            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">
-              17,000
+            <h1 className="text-gray-900 p-2 hidden text-[13px] text-white rounded-lg bg-violet-500">
+              0
             </h1>
           </div>
 
@@ -197,7 +208,7 @@ function DashbaordPage() {
             <p className="text-gray-700  text-violet-500 text-[16px]">
               Number of Transactions
             </p>
-            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">
+            <h1 className="text-gray-900 p-2 hidden text-[13px] text-white rounded-lg bg-violet-500">
               0
             </h1>
           </div>
@@ -217,8 +228,8 @@ function DashbaordPage() {
             <p className="text-gray-700  text-violet-500 text-[16px]">
               Amount In Users Wallet
             </p>
-            <h1 className="text-gray-900 p-2  text-[13px] text-white rounded-lg bg-violet-500">
-              1,200,000
+            <h1 className="text-gray-900 p-2  hidden text-[13px] text-white rounded-lg bg-violet-500">
+              0
             </h1>
           </div>
 

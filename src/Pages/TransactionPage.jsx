@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../Api/analytics";
 import Loader from "../Components/Loader";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
 export default function TransactionPage() {
 
@@ -109,110 +109,25 @@ export default function TransactionPage() {
   
 
   return analyticQuery.isLoading ? <Loader/>: (
-    <div>
+    <div className="w-full">
       {/* <p>TransactionPage</p> */}
 
-      <div className="bg-white w-full p-4 rounded-sm h-full">
-        <div role="tablist" className="tabs    tabs-lifted">
-          {/* <input
-            type="radio"
-            name="my_tabs_2"
-            role="tab"
-            className="tab"
-            aria-label="Successful Transactions"
-            checked
-          />
-          <div
-            role="tabpanel"
-            className="tab-content bg-grey-100 border-base-300 rounded-box overflow-x-scroll  p-3"
-          >
-            <div className="flex flex-col bg-white gap-4 mt-2">
-                            <details className="dropdown dropdown-end self-end">
-                <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white">Filter Result <AiFillCaretDown/> </summary>
-                <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[10]  rounded-box w-52">
-                    <div className="flex gap-3 ">
-                        <p className="text-[12px] text-purple-500">Today</p>
-                        <p className="text-[12px] text-gray-500">YesterDay</p>
-                        <p className="text-[12px] text-gray-500">30 Days</p>
-                    </div>
+      <div className="bg-white w-full p-4 rounded-sm   max-w-full bg-green-900 ">
+       
 
-                    <div className="w-full flex flex-col gap-1">
-                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold ">Custom Date Range</label>
-                        <div className="flex w-full ">
-                        <input type="date" placeholder="from" className="w-full text-gray-900 p-2 border text-[13px]" />
-                        <input type="date" placeholder="to" className="w-full text-gray-900 p-2 border text-[13px]" />
-                        </div>
-                    </div>
+      <div className="flex flex-col bg-white gap-4 mt-2 h-[80vh] w-full  bg-red-900">
+        <div className="flex justify-between items-center">
+          <h1>Transaction Record</h1>
 
-                    <div className="w-full flex flex-col gap-1">
-                        <label htmlFor="" className="text-gray-900 text-[14px] font-bold">Transaction Type</label>
-                        <div className="flex w-full ">
-                        <select className="border p-2 text-[13px] w-full">
-                            <option className="">Payout</option>
-                        </select>
-                        </div>
+          <div className="flex row gap-3">
 
-                    </div>
+            {/* <div className="flex bg-white gap-2 flex-row pl-2 items-center border  rounded-md">
+              <AiOutlineSearch size={20} className="text-slate-400" />
+              <input type="text" className="text-[14px] p-1.5 outline-none placeholder:text-[13px]" placeholder="Search Record by Ref Id" />
+            </div> */}
 
 
-                    <div className="btn btn-sm text-white p-2 px-4 font-normal hover:bg-purple-400 text-[13px] bg-purple-500">
-                        Filter
-                    </div>
-                </div>
-                </details>
-                <div className="overflow-x-auto ">
-              <table className="table table-xs">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Ref</th>
-                    <th>User</th>
-                    <th>Amount</th>
-                    <th>Transaction Type</th>
-                    <th>Date</th>
-
-                  </tr>
-                </thead>
-                <tbody>
-
-                  {
-                    transactionSuccess.map((tran,index)=>{
-
-                        return (
-                        <tr key={tran.TxRef} className="p-1">
-                        <th>{index+1}</th>
-                        <td className="word-break">{tran.TxRef}</td>
-                        <td>{tran.accountname}</td>
-                        <td>{tran.amount}</td>
-                        <td>{tran.transactionType}</td>
-                        <td>{new Date(tran.date).toDateString()}</td>
-
-                      </tr>)
-                    })
-                  }
-                 
-                 
-                </tbody>
-              </table>
-            </div> 
-            </div>
-           
-          </div> */}
-
-          <input
-            type="radio"
-            name="my_tabs_2"
-            role="tab"
-            className="tab"
-            aria-label="Transactions"
-            defaultChecked
-          />
-            <div
-            role="tabpanel"
-            className="tab-content bg-grey-100 border-base-300 rounded-box min-h-[500px] h-full overflow-x-scroll  p-3"
-          >
-            <div className="flex flex-col bg-white gap-4 mt-2">
-                            <details className="dropdown dropdown-end self-end">
+            <details className="dropdown dropdown-end self-end">
                 <summary className="m-1 btn btn-sm text-[13px] rounded-none bg-gray-500 text-white">Filter Result <AiFillCaretDown/> </summary>
                 <div className="p-2 border flex gap-1.5 flex w-[300px]  bg-white  shadow menu dropdown-content z-[10]  rounded-box w-52">
                     <div className="flex gap-3 ">
@@ -253,8 +168,12 @@ export default function TransactionPage() {
 
                    
                 </div>
-                </details>
-                <div className="overflow-x-auto ">
+                </details> 
+            </div>
+                         
+        </div>
+       
+                <div className="overflow-x-auto">
               <table className="table table-xs">
                 {/* head */}
                 <thead>
@@ -292,9 +211,6 @@ export default function TransactionPage() {
               </table>
             </div> 
             </div>
-           
-          </div>
-        </div>
 
         
       </div>
