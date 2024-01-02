@@ -14,14 +14,14 @@ function Header(props) {
     <div className='flex  justify-between items-center h-[70px] mx-1 bg-white  md:mx-4'>
       <div className='flex  items-center gap-2'>
       <AiOutlineMenu onClick={()=>props.setSidebar(true)}  className='xl:hidden' size={24}/>
-      <div className='text-[13px] md:text-[20px] text-gray-900'>DashBoard  <span className='text-[13px] md:text-lg  text-gray-900'>   </span> </div>
+      <div className='text-[13px] md:text-[20px] text-gray-900 font-semibold'>Dashboard  <span className='text-[13px] md:text-lg  text-gray-900'>   </span> </div>
       </div>
 
         <div className='flex gap-3 items-center'>
 
         <div className="flex gap-1 items-center">
 
-            <div className='flex items-center justify-center p-2 rounded-full bg-purple-500'>
+            <div className='flex items-center justify-center p-2 rounded-full bg-gray-500'>
             <BsPersonFill className='text-white' size={18}/>
   
             </div>

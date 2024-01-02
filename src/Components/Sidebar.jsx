@@ -9,7 +9,8 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { BsDashSquare, BsPower, BsSendArrowUp } from "react-icons/bs";
-import { FaExchangeAlt, FaUser, FaUserAlt } from "react-icons/fa";
+import { TbTransferIn, TbTransferVertical } from "react-icons/tb";
+import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 export default function Sidebar(props) {
   const activeLink =
@@ -48,7 +49,7 @@ export default function Sidebar(props) {
             className={({ isActive }) => (isActive ? activeLink : normalLink)}
           >
             <div>
-              <AiOutlineDashboard size={24} />
+              <MdDashboard size={24} />
             </div>
 
             <div className="text-[14px]">Dashboard</div>
@@ -59,7 +60,7 @@ export default function Sidebar(props) {
             className={({ isActive }) => (isActive ? activeLink : normalLink)}
           >
             <div>
-              <AiOutlineCloudUpload size={24} />
+              <TbTransferVertical size={24} />
             </div>
 
             <div className="text-[14px]">Transactions</div>
