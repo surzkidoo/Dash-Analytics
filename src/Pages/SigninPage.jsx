@@ -52,25 +52,32 @@ function SigninPage() {
         try {
           await validationSchema.validate(formData, { abortEarly: false });
           let result = await mutation.mutateAsync(formData);
-          console.log(result.data);
+          
+          if(result){
+            if(result.data.data){
+              console.log(result.data);
+              dispatch(setUser(result.data))
+              navigate('/');
+              return
+            }else{
+              console.log(result);
+              setError({message:result.data.msg})
 
-          if(result.data.data){
-            console.log(result.data);
-            dispatch(setUser(result.data))
-            navigate('/');
-            return
+            }
           }
-          console.log(result.data);
-          setError({message:result.data.msg})
+         
         } catch (error) {
+
+          console.log(error)
           if (error.name === 'ValidationError') {
             const validationErrors = {};
             error.inner.forEach((e) => {
               validationErrors[e.path] = e.message;
             });
-            setError({message:`Please Fill  in the form correctly`})
+            setError({message:`Please Fill In Your Correct Detail`})
             console.error('Validation error:', validationErrors);
           }else{ 
+
             console.log('Signup failed:', error.message);
             setError({message:'Something went wrong try again!!!'});
 

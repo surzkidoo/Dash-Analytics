@@ -45,6 +45,22 @@ export default function TransactionPage() {
     console.log('reset')
   }
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+
+
+    if(!searchTerm){
+      settableData(transactionSuccess)
+      return
+    }
+
+
+    const results = transactionSuccess.filter(item =>
+      item.TxRef.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    settableData(results);
+  };
 
  
   
@@ -119,12 +135,12 @@ export default function TransactionPage() {
         <div className="flex justify-between items-center">
           <h1>Transaction Record</h1>
 
-          <div className="flex row gap-3">
+          <div className="flex flex-row gap-3 items-center ">
 
-            {/* <div className="flex bg-white gap-2 flex-row pl-2 items-center border  rounded-md">
+            <div className=" bg-white gap-2  hidden md:flex  flex-row pl-2 items-center border  rounded-md">
               <AiOutlineSearch size={20} className="text-slate-400" />
-              <input type="text" className="text-[14px] p-1.5 outline-none placeholder:text-[13px]" placeholder="Search Record by Ref Id" />
-            </div> */}
+              <input type="text" className="text-[14px] p-1.5 outline-none placeholder:text-[13px]" onChange={handleSearch} placeholder="Search Record by Ref Id" />
+            </div>
 
 
             <details className="dropdown dropdown-end self-end">
