@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap');
+
 
 *{
   padding: 0;
@@ -6,7 +8,6 @@
   
 }
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -65,9 +66,79 @@ code {
     monospace;
 }
 
+.page-title-text{
+  color: var(--Secondary, #35383F);
+font-family: Quicksand;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
 
+.secondary-text{
+  color: var(--Secondary, #35383F);
+font-family: Quicksand;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 120% */
+}
+
+.label-text{
+  color: var(--Body-Text---Dark, #5D6065);
+font-family: Quicksand;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.text-main{
+  color: var(--Body-Text---Light, #86888C);
+font-family: Quicksand;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.input-active{
+  border-radius: 5px;
+border: 0.75px solid rgba(134, 136, 140, 0.50);
+background: rgba(216, 216, 216, 0.00);
+color: var(--Body-Text---Light, #86888C);
+font-family: Quicksand;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding: 27px 21px
+}
+
+.input-disable{
+ 
+  border-radius: 5px;
+  border: 0.75px solid rgba(134, 136, 140, 0.50);
+  background: rgba(216, 216, 216, 0.30);
+  color: var(--Body-Text---Light, #86888C);
+  font-family: Quicksand;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 27px 21px
+  }
+  
 
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@layer components {
+  .btn-blue {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  }
+}

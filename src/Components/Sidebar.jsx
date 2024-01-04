@@ -31,7 +31,7 @@ export default function Sidebar(props) {
       <div className="flex flex-col gap-0  md:gap-5">
         <div className="text font-bold pl-4 mt-3 justify-between flex items-center">
           <div>
-            <span className=" text-purple-900 ">Dash-Logo</span>
+            <span className=" text-purple-900 ">KaraADs</span>
           </div>
 
           <AiFillCloseCircle
