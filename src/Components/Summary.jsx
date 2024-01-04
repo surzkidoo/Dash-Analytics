@@ -1,22 +1,18 @@
 import React from 'react'
 import { BsCloudLightning, BsThreeDotsVertical } from 'react-icons/bs'
 
-export default function Summary({name,number,icon,color}) {
+export default function Summary({name,number,icon}) {
   return (
-    <div className="flex w-full md:w-[230px]  h-[130px] bg-white rounded-xl  flex-col justify-between p-3">
-    <div className="flex justify-between  self-start  w-full ">
-        <div className={`p-1 ${color} rounded-md`}>
-            {icon}
-        </div>
+    <div className="flex w-full md:w-[339px] rounded-[20px]  h-[202px] bg-white rounded-xl px-[36px] py-[44px] flex-row overflow-hidden">
+     
 
-        <BsThreeDotsVertical className="text-black" size={20} />
 
+    <div className="flex flex-col gap-[10px]">
+        <p className="page-title-text">{number}</p>
+        <p className="text-textPara font-medium text-[18px] w-[153px]">{name}</p>
     </div>
 
-    <div className="flex flex-col">
-        <p className="text-gray-400 text-[11px]">{name}</p>
-        <p className="text-gray-900 font-semibold">{number}</p>
-    </div>
+    <img src={icon} className='w-[178px] h-[178px]' alt="" />
 
   </div>
   )

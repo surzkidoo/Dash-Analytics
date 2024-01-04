@@ -7,6 +7,8 @@ import {
 import { AiFillWarning } from 'react-icons/ai';
 import Loader from '../Components/Loader';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';  
+
 
 function SignupPage() {
   
@@ -79,26 +81,32 @@ const validationSchema = Yup.object().shape({
 
   return (
     <div className='flex'>
-      <div className=' bg-bgform flex-[1]'>
-        <img src="" alt="" srcset="" />
+      <div className=' bg-bgform flex-[1] flex  items-center'>
+        <img src={logo} alt="" className='w-full' srcset="" />
       </div>
       <div className="flex w-full items-center flex-[3] justify-center mt-0 min-h-screen overflow-hidden bg-pageBg ">
       {mutation.isPending && <Loader/>} 
-      <form onSubmit={handleSubmit} className=" w-full sm:w-[450px] rounded-md  bg-white p-4 gap-4 flex flex-col m-1">
-      <h4 className="text-gray-900 text-lg self-center font-semibold">Sign Up</h4>
+      <div className='w-[850px] flex justify-center rounded-[20px] py-[69px] bg-white shadow-max'>
+      <form onSubmit={handleSubmit} className=" w-full sm:w-[480px] rounded-md  bg-white p-4 gap-[32px] flex flex-col m-1">
+        <div className='gap-[10px] flex-col flex'>
+        <h4 className="self-center page-title-text">Create an account</h4>
+
+<p className='self-center text-main '>Sign up to get started with Karaads</p>
+        </div>
+      
 
       {success && <span className='text-green-500 text-[14px] items-center self-center flex gap-1 mt-1'>  {success}</span>}
 
+
+      <div className='flex flex-col gap-[12px]'>
+
           <div>    
 
-            <label className="text-[14px] text-gray-700">Full Name</label>
-            <div className="border h-[45px] rounded-md  flex items-center bg-white gap-1 p-2">
-              <div>
-                <BsPersonFill size={18} className="text-gray-500" />
-              </div>
+            <div className="">
+             
 
               <input
-                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-zink-400 text-gray-500  w-full"
+                className="input-active"
                 placeholder="Full Name"
                 type="text"
                 name="fullname"
@@ -115,14 +123,11 @@ const validationSchema = Yup.object().shape({
           </div>
 
           <div>    
-            <label className="text-[14px] text-gray-700">Email</label>
-            <div className="border h-[45px] rounded-md  flex items-center bg-white gap-1 p-2">
-              <div>
-                <BsEnvelopeFill size={18} className="text-gray-500" />
-              </div>
+            <div className="">
+            
 
               <input
-                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-zink-400 text-gray-500   w-full"
+                className="input-active"
                 placeholder="Enter your E-mail Addresss"
                 type="text"
                 name="email"
@@ -138,17 +143,12 @@ const validationSchema = Yup.object().shape({
 
           </div>
 
-
-
           <div>    
-            <label className="text-[14px] text-gray-700">Phone Number</label>
-            <div className="border h-[45px] rounded-md  flex items-center bg-white gap-1 p-2">
-              <div>
-                <BsTelephoneFill size={18} className="text-gray-500" />
-              </div>
+            <div className="">
+              
 
               <input
-                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-zink-400 text-gray-500   w-full"
+                className="input-active"
                 placeholder="Enter Phone Number"
                 type="text"
                 name="phoneNumber"
@@ -163,15 +163,13 @@ const validationSchema = Yup.object().shape({
 
           </div>
 
-          <div>    
-            <label className="text-[14px] text-gray-700">Password</label>
-            <div className="border h-[45px] rounded-md  flex items-center bg-white gap-1 p-2">
-              <div>
-                <BsLockFill size={18} className="text-gray-500" />
-              </div>
+        <div className='flex gap-[12px]'>
+        <div>    
+            <div className="">
+            
 
               <input
-                className="border-none outline-none bg-white placeholder:text-[13px] text-xs p-2 placeholder:text-zink-400 text-gray-500  w-full"
+                className="input-active"
                 placeholder="Password"
                 type="password"
                 name="password"
@@ -188,17 +186,46 @@ const validationSchema = Yup.object().shape({
 
           </div>
 
+          <div>    
+            <div className="">
+            
+
+              <input
+                className="input-active"
+                placeholder="Confirm Password"
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              
+              />
 
 
-          <button type='submit'  className="bg-violet-800 btn btn-xs hover:bg-violet-800  flex items-center outline-none justify-center  uppercase text-[13px] text-white h-[45px] ">
-            Sign up
-          </button>
+            </div>
+            {error?.password && <span className='text-red-800 text-[12px] flex gap-1 mt-1'> <AiFillWarning/> {error.password}</span>}
 
-          <div className="flex gap-2">
-            <p className="text-[13px] text-gray-700">Already have an Account?</p> <Link to='/sign-in' className='text-[13px] font-bold text-violet-900' >Sign In</Link>
+            
 
           </div>
+        </div>
+         
+
+          </div>
+
+
+          <button type='submit'  className="bg-primary btn btn-xs hover:bg-secondary rounded-[5px] gap-[8px] flex items-center outline-none justify-center   text-[16px] text-white h-[57px] ">
+            Register
+          <svg width="7" height="8" viewBox="0 0 7 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.97623 1.3264L3.32307 0.970551C3.46993 0.819875 3.7074 0.819875 3.8527 0.970551L6.88986 4.08505C7.03672 4.23572 7.03672 4.47937 6.88986 4.62844L3.8527 7.74454C3.70584 7.89521 3.46836 7.89521 3.32307 7.74454L2.97623 7.38869C2.82781 7.23641 2.83093 6.98795 2.98248 6.83888L4.86508 4.99872H0.374958C0.167169 4.99872 0 4.8272 0 4.61401V4.10108C0 3.88789 0.167169 3.71637 0.374958 3.71637H4.86508L2.98248 1.87621C2.82937 1.72713 2.82625 1.47868 2.97623 1.3264Z" fill="white"/>
+</svg>
+
+          </button>
+
+             <Link to='/sign-in' className="text-[16px] text-primary text-center" ><p className="text-[16px] text-primary text-center">Already registered? Login. </p></Link>
+
         </form>
+      </div>
+    
       
     </div>
       </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 
 *{
@@ -34,18 +34,28 @@
   justify-content: center;
   z-index: 100;
 }
+.loader-bg{
+  width: 481px;
+height: 18px;
+border-radius: 5px;
+padding: 6px;
+background: #ECECEC;
+display: flex;
+align-items: center;
+}
 .loader {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid rgb(139 92 246); /* Blue */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 200ms linear infinite;
+  width: 100%;
+  height: 6px;
+  flex-shrink: 0;
+  animation: spin 4s linear ;
+  transition: all 1s ease-in;
+  border-radius: 5px;
+background:  linear-gradient(270deg, #0AAAAA -4.35%, #066969 100%);
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { width: 0%; }
+  100% { width: 100% }
 }
 
 body {
@@ -57,9 +67,7 @@ body {
   background-color: white;
 }
 
-input{
-  background-color: white !important;
-}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -74,7 +82,10 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
+.gra{
+  background:linear-gradient(270deg, #0AAAAA -4.35%, #066969 100%);
 
+}
 .secondary-text{
   color: var(--Secondary, #35383F);
 font-family: Quicksand;
@@ -93,6 +104,9 @@ font-weight: 700;
 line-height: normal;
 }
 
+.text-white-i{
+  color: white !important;
+}
 .text-main{
   color: var(--Body-Text---Light, #86888C);
 font-family: Quicksand;
@@ -112,7 +126,10 @@ font-size: 16px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-padding: 27px 21px
+padding: 19px 20px;
+height: 59px;
+outline: none;
+width: 100%;
 }
 
 .input-disable{
@@ -126,9 +143,14 @@ padding: 27px 21px
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding: 27px 21px
+  padding: 18px 18px;
+  width: 100%
+
   }
   
+  .shadow-max {
+    box-shadow: 0px 4px 6px 0px rgba(62, 73, 84, 0.04);
+      }
 
 
 @tailwind base;
