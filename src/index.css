@@ -47,7 +47,7 @@ align-items: center;
   width: 100%;
   height: 6px;
   flex-shrink: 0;
-  animation: spin 4s linear ;
+  animation: spin 4s linear infinite;
   transition: all 1s ease-in;
   border-radius: 5px;
 background:  linear-gradient(270deg, #0AAAAA -4.35%, #066969 100%);

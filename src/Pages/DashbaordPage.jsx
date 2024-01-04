@@ -144,7 +144,7 @@ function DashbaordPage() {
 
       <div className="flex justify-between items-center bg-errorBg  p-[14px] rounded-[5px]">
       <p className="text-textHead text-[14px] font-medium">We have recently updated our system for invoicing. Please update your billing details in the settings.</p>
-      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="11" height="11" viewBox="0 0 11 11"  className="flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.96875 0H1.03125C0.461914 0 0 0.527902 0 1.17857V9.82143C0 10.4721 0.461914 11 1.03125 11H9.96875C10.5381 11 11 10.4721 11 9.82143V1.17857C11 0.527902 10.5381 0 9.96875 0ZM8.17266 7.13281C8.27578 7.25067 8.27578 7.44219 8.17266 7.56004L7.30254 8.55446C7.19941 8.67232 7.03184 8.67232 6.92871 8.55446L5.5 6.90692L4.07129 8.55446C3.96816 8.67232 3.80059 8.67232 3.69746 8.55446L2.82734 7.56004C2.72422 7.44219 2.72422 7.25067 2.82734 7.13281L4.26895 5.5L2.82734 3.86719C2.72422 3.74933 2.72422 3.55781 2.82734 3.43996L3.69746 2.44554C3.80059 2.32768 3.96816 2.32768 4.07129 2.44554L5.5 4.09308L6.92871 2.44554C7.03184 2.32768 7.19941 2.32768 7.30254 2.44554L8.17266 3.43996C8.27578 3.55781 8.27578 3.74933 8.17266 3.86719L6.73105 5.5L8.17266 7.13281Z" fill="#86888C"/>
 </svg>
 
@@ -152,7 +152,7 @@ function DashbaordPage() {
 
       <div className="flex justify-between items-center gra  p-[14px] rounded-[5px]">
       <p className="text-white text-[14px] medium">Welcome name. If you have questions about onboarding or how Karaads creator works, please schedule a call with our support team.</p>
-      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="11" height="11" className="flex-shrink-0" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.96875 0H1.03125C0.461914 0 0 0.527902 0 1.17857V9.82143C0 10.4721 0.461914 11 1.03125 11H9.96875C10.5381 11 11 10.4721 11 9.82143V1.17857C11 0.527902 10.5381 0 9.96875 0ZM8.17266 7.13281C8.27578 7.25067 8.27578 7.44219 8.17266 7.56004L7.30254 8.55446C7.19941 8.67232 7.03184 8.67232 6.92871 8.55446L5.5 6.90692L4.07129 8.55446C3.96816 8.67232 3.80059 8.67232 3.69746 8.55446L2.82734 7.56004C2.72422 7.44219 2.72422 7.25067 2.82734 7.13281L4.26895 5.5L2.82734 3.86719C2.72422 3.74933 2.72422 3.55781 2.82734 3.43996L3.69746 2.44554C3.80059 2.32768 3.96816 2.32768 4.07129 2.44554L5.5 4.09308L6.92871 2.44554C7.03184 2.32768 7.19941 2.32768 7.30254 2.44554L8.17266 3.43996C8.27578 3.55781 8.27578 3.74933 8.17266 3.86719L6.73105 5.5L8.17266 7.13281Z" fill="white"/>
 </svg>
 

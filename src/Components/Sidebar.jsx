@@ -26,7 +26,7 @@ export default function Sidebar(props) {
       onClick={() => {
         props.setSidebar(!props.sidebar);
       }}
-      className={`w-[345px]  bg-white left-0 xl:static justify-between border-r h-screen fixed flex flex-col  ${
+      className={`w-[280px] md:w-[345px]  bg-white left-0 xl:static justify-between border-r h-screen fixed flex flex-col  ${
         !props.sidebar && "hidden"
       } xl:flex`}
     >
