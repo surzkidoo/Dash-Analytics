@@ -213,7 +213,7 @@ const validationSchema = Yup.object().shape({
           </div>
 
 
-          <button type='submit'  className="bg-primary btn btn-xs hover:bg-secondary rounded-[5px] gap-[8px] flex items-center outline-none justify-center   text-[16px] text-white h-[57px] ">
+          <button type='submit'  className="bg-primary btn btn-xs outline-none hover:bg-secondary rounded-[5px] gap-[8px] flex items-center outline-none justify-center   text-[16px] text-white h-[57px] ">
             Register
           <svg width="7" height="8" viewBox="0 0 7 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.97623 1.3264L3.32307 0.970551C3.46993 0.819875 3.7074 0.819875 3.8527 0.970551L6.88986 4.08505C7.03672 4.23572 7.03672 4.47937 6.88986 4.62844L3.8527 7.74454C3.70584 7.89521 3.46836 7.89521 3.32307 7.74454L2.97623 7.38869C2.82781 7.23641 2.83093 6.98795 2.98248 6.83888L4.86508 4.99872H0.374958C0.167169 4.99872 0 4.8272 0 4.61401V4.10108C0 3.88789 0.167169 3.71637 0.374958 3.71637H4.86508L2.98248 1.87621C2.82937 1.72713 2.82625 1.47868 2.97623 1.3264Z" fill="white"/>

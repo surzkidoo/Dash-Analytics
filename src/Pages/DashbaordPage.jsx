@@ -140,7 +140,7 @@ function DashbaordPage() {
   return analyticQuery.isLoading ? (
     <Loader />
   ) : (
-    <div className="px-0 md:px-4 py-2 flex gap-[21px] flex-wrap flex-col bg-pageBg ">
+    <div className="px-0 md:px-4 py-2 flex gap-[21px] flex-wrap flex-col ">
 
       <div className="flex justify-between items-center bg-errorBg  p-[14px] rounded-[5px]">
       <p className="text-textHead text-[14px] font-medium">We have recently updated our system for invoicing. Please update your billing details in the settings.</p>
