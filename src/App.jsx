@@ -46,8 +46,9 @@ function App() {
             
           </Routes>
 
-          <button className="bg-primary outline-none btn hover:bg-secondary fixed bottom-[48px] right-[48px] w-[180px] text-white flex items-center justify-center rounded-[5px] h-p[57px] gap-[12px]">
-              Support 
+          <button className="bg-primary outline-none btn hover:bg-secondary fixed bottom-[10px] right-[10px] md:bottom-[48px] md:right-[48px] w-[60px] md:w-[180px]  text-white flex items-center justify-center rounded-[5px] h-p[57px] gap-[12px]">
+              <p className="hidden md:block">Support</p>
+               
 
             <img src={chat} alt="" />
 

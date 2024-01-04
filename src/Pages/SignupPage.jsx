@@ -81,13 +81,13 @@ const validationSchema = Yup.object().shape({
 
   return (
     <div className='flex'>
-      <div className=' bg-bgform flex-[1] flex  items-center'>
+      <div className=' bg-bgform flex-[1] flex hidden md:flex items-center'>
         <img src={logo} alt="" className='w-full' srcset="" />
       </div>
       <div className="flex w-full items-center flex-[3] justify-center mt-0 min-h-screen overflow-hidden bg-pageBg ">
       {mutation.isPending && <Loader/>} 
-      <div className='w-[850px] flex justify-center rounded-[20px] py-[69px] bg-white shadow-max'>
-      <form onSubmit={handleSubmit} className=" w-full sm:w-[480px] rounded-md  bg-white p-4 gap-[32px] flex flex-col m-1">
+      <div className='w-[850px] flex justify-center rounded-[20px] py-[30px] md:py-[69px] bg-white shadow-max'>
+      <form onSubmit={handleSubmit} className=" w-full md:w-[480px] rounded-md  bg-white p-4 gap-[32px] flex flex-col m-1">
         <div className='gap-[10px] flex-col flex'>
         <h4 className="self-center page-title-text">Create an account</h4>
 
@@ -163,7 +163,7 @@ const validationSchema = Yup.object().shape({
 
           </div>
 
-        <div className='flex gap-[12px]'>
+        <div className='flex flex-col md:flex-row gap-[12px]'>
         <div>    
             <div className="">
             
