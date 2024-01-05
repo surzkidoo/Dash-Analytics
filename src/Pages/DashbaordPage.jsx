@@ -160,7 +160,7 @@ function DashbaordPage() {
       </div>
 
 
-      <div className="flex gap-[40px] p-4 md:p-0 flex-col md:flex-row flex-wrap">
+      <div className="flex gap-[20px] p-4 md:p-0 flex-col md:flex-row flex-wrap">
         <Summary
           number={analyticQuery.data.data[
             "Life time, Total Number of Transsaction request for earnings, payout, and error"

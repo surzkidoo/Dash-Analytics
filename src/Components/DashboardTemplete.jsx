@@ -18,10 +18,10 @@ function DashbaordTemplete() {
       </div>
 
       <div className="w-full min-h-screen flex flex-col ">
-        <div className="h-[120px] flex-shrink-0">
+        <div className="h-[80px] bg-white flex-shrink-0">
           <Header sidebar={sidebar} setSidebar={setSidebar} />
         </div>
-        <div className="sm:px-2 md:px-4  py-2 flex gap-10   flex-col bg-pageBg  overflow-y-scroll">
+        <div className="sm:px-2 md:px-4  py-2 flex gap-10 h-full   flex-col bg-pageBg  overflow-y-scroll">
         <Outlet/>
         </div>
       </div>

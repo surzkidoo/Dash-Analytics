@@ -188,6 +188,24 @@ export default function TransactionPage() {
             </div>
                          
         </div>
+
+        <div className="flex gap-[25px] borber-b border-[#EAEAEA] border-b-[1px] self-start">
+          <div className="p-[14px] font-bold  text-textHead min-w-[97px] flex justify-center border-b border-b-[4px] border-primary">
+            All
+          </div>
+
+          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          Pending Approval
+          </div>
+
+          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          Approved
+          </div>
+
+          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          Rejected
+          </div>
+        </div>
        
                 <div className="overflow-x-auto">
               <table className="table table-xs">
@@ -210,13 +228,13 @@ export default function TransactionPage() {
                     tableData.map((tran,index)=>{
 
                         return (
-                        <tr key={tran.TxRef} className="p-1">
+                        <tr key={tran.TxRef} className="p-">
                         <th>{index+1}</th>
-                        <td className="word-break">{tran.TxRef}</td>
-                        <td>{tran.accountname}</td>
-                        <td>{tran.amount}</td>
-                        <td>{tran.transactionType}</td>
-                        <td>{new Date(tran.date).toDateString()}</td>
+                        <td className="word-break p-[20px] text-[12px] text-textHead">{tran.TxRef}</td>
+                        <td className=" p-[10px] text-[14px] text-textHead">{tran.accountname}</td>
+                        <td className=" p-[10px] text-[14px] text-textHead">{tran.amount}</td>
+                        <td className=" p-[10px] text-[14px] text-textHead">{tran.transactionType}</td>
+                        <td className=" p-[10px] text-[14px] text-textHead">{new Date(tran.date).toDateString()}</td>
 
                       </tr>)
                     })

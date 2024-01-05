@@ -5,16 +5,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box; 
-  
 }
 :root {
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
 }
 
 .overlay{
@@ -60,6 +53,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  background-color: rgba(10, 170, 170, 0.05);
+
 }
 
 
@@ -72,7 +67,7 @@ code {
 .page-title-text{
   color: var(--Secondary, #35383F);
 font-family: Quicksand;
-font-size: 32px;
+font-size: 28px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
@@ -84,7 +79,7 @@ line-height: normal;
 .secondary-text{
   color: var(--Secondary, #35383F);
 font-family: Quicksand;
-font-size: 20px;
+font-size: 18px;
 font-style: normal;
 font-weight: 700;
 line-height: 24px; /* 120% */
@@ -93,7 +88,7 @@ line-height: 24px; /* 120% */
 .label-text{
   color: var(--Body-Text---Dark, #5D6065);
 font-family: Quicksand;
-font-size: 18px;
+font-size: 16px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
@@ -105,7 +100,7 @@ line-height: normal;
 .text-main{
   color: var(--Body-Text---Light, #86888C);
 font-family: Quicksand;
-font-size: 16px;
+font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;

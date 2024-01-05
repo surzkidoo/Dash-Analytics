@@ -25,9 +25,9 @@ function ActivationPage() {
     <div className=' bg-bgform flex-[1] flex hidden md:flex  items-center'>
       <img src={logo} alt="" className='w-full' srcset="" />
     </div>
-    <div className="flex w-full items-center flex-[3] justify-center mt-0 min-h-screen overflow-hidden bg-pageBg ">
+    <div className="flex w-full items-center flex-[4] justify-center mt-0 min-h-screen overflow-hidden bg-pageBg ">
    
-    <div className='w-[850px] flex justify-center rounded-[20px] py-[30px] md:py-[69px] bg-white shadow-max'>
+    <div className='w-[700px] flex justify-center rounded-[20px] py-[30px] md:py-[69px] bg-white shadow-max'>
     <form  className=" w-full md:w-[480px] rounded-md  bg-white p-4 gap-[32px] flex flex-col m-1">
       <div className='gap-[10px] flex-col flex'>
       <h4 className="self-center page-title-text">Account verification</h4>
