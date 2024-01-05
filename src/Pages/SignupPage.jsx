@@ -95,7 +95,7 @@ const validationSchema = Yup.object().shape({
         </div>
       
 
-      {success && <span className='text-success bg-successBg text-[14px] items-center self-center flex p-[6px]'>  {success}</span>}
+      {success && <span className='text-success bg-successBg text-[14px] items-center self-center flex p-[6px]'>{success}</span>}
 
 
       <div className='flex flex-col gap-[12px]'>

@@ -14,9 +14,17 @@ export default function TransactionPage() {
     const typeRef = useRef()
 
 
-    const [sortDateType, setSortDateType] = useState('')
+    const [sortDateType, setSortDateType] = useState('');
+
+    const [currentTab, setCurrentTab] = useState('all');
+
+    const activeTabCss= 'p-[14px] font-bold  text-textHead min-w-[97px] flex justify-center border-b border-b-[4px] border-primary';
+    const normalTabCss='p-[14px]  text-textHead min-w-[97px] flex justify-center';
 
 
+    const handleTab = (value)=>{
+      setCurrentTab(value)
+    }
 
 
     const analyticQuery = useQuery({queryKey:['transaction'], queryFn:  fetchData });
@@ -190,19 +198,19 @@ export default function TransactionPage() {
         </div>
 
         <div className="flex gap-[25px] borber-b border-[#EAEAEA] border-b-[1px] self-start">
-          <div className="p-[14px] font-bold  text-textHead min-w-[97px] flex justify-center border-b border-b-[4px] border-primary">
+          <div onClick={()=>handleTab('all')} className={currentTab=='all'? activeTabCss : normalTabCss}>
             All
           </div>
 
-          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          <div onClick={()=>handleTab('pending')} className={currentTab=='pending'? activeTabCss : normalTabCss}>
           Pending Approval
           </div>
 
-          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          <div onClick={()=>handleTab('approved')} className={currentTab=='approved'? activeTabCss : normalTabCss}>
           Approved
           </div>
 
-          <div className="p-[14px]  text-textHead min-w-[97px] flex justify-center ">
+          <div onClick={()=>handleTab('rejected')} className={currentTab=='rejected'? activeTabCss : normalTabCss}>
           Rejected
           </div>
         </div>
@@ -244,9 +252,19 @@ export default function TransactionPage() {
                 </tbody>
               </table>
             </div> 
+
             </div>
 
-        
+            <div className="join my-2">
+  <button className="join-item btn btn-sm bg-primary text-white hover:bg-secondary">1</button>
+  <button className="join-item btn btn-sm text-primary"> 2</button>
+  <button className="join-item btn btn-sm text-primary"> 3</button>
+  <button className="join-item btn btn-sm text-primary"> 4</button>
+
+  <button className="join-item btn btn-sm btn-disabled">...</button>
+  <button className="join-item btn btn-sm text-primary">99</button>
+  <button className="join-item btn btn-sm text-primary">100</button>
+</div>
       </div>
     </div>
   );

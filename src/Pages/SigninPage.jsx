@@ -31,7 +31,7 @@ function SigninPage() {
 
 
       const [error, setError] = useState({
-        message: '',
+        message:'',
       });
 
       const mutation = useMutation({
@@ -104,7 +104,7 @@ function SigninPage() {
       </div>
     
 
-    {error && <span className='text-error bg-errorBg text-[14px] items-center self-center flex p-[6px]'>  {error.message}</span>}
+    {error.message && <span className='text-error bg-errorBg text-[14px] items-center self-center flex p-[6px]'>{error.message}</span>}
 
 
     <div className='flex flex-col gap-[12px]'>
