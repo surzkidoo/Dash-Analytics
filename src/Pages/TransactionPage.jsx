@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../Api/analytics";
 import Loader from "../Components/Loader";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
+import { fetchTransaction } from "../Api/transaction";
 
 export default function TransactionPage() {
 
@@ -17,29 +18,91 @@ export default function TransactionPage() {
     const [sortDateType, setSortDateType] = useState('');
 
     const [currentTab, setCurrentTab] = useState('all');
-
-    const activeTabCss= 'p-[14px] font-bold  text-textHead min-w-[97px] flex justify-center border-b border-b-[4px] border-primary';
-    const normalTabCss='p-[14px]  text-textHead min-w-[97px] flex justify-center';
+    const [page, setPage] = useState(1);
 
 
-    const handleTab = (value)=>{
-      setCurrentTab(value)
+    const activeTabCss= 'p-[8px] font-bold  text-textHead min-w-[60px] flex justify-center border-b border-b-[4px] border-primary';
+    const normalTabCss='p-[8px]  text-textHead min-w-[60px] flex justify-center';
+
+
+    const handlePage = (value)=>{
+    setPage(value);
+    // queryResult.refetch({ page:value, transactionType: currentTab });
+
+   }
+
+    const queryResult = useQuery({
+      queryKey: ['transactiondata', { page: page, transactionType: currentTab }],
+      queryFn: () => fetchTransaction(page, currentTab),
+      keepPreviousData: true,
+    });
+
+    const renderPageNumbers = () => {
+      const totalPages = queryResult.data.totalPages;
+      const visiblePages = 5; // Number of visible page numbers at a time
+      const halfVisiblePages = Math.floor(visiblePages / 2);
+  
+      let startPage = Math.max(1, page - halfVisiblePages);
+      let endPage = Math.min(totalPages, startPage + visiblePages - 1);
+  
+      if (endPage - startPage + 1 < visiblePages) {
+        startPage = Math.max(1, endPage - visiblePages + 1);
+      }
+  
+      const pageNumbers = [];
+  
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(
+          <span
+            key={i}
+            onClick={() => handlePage(i)}
+            className={
+            i === page ? 'join-item btn btn-sm bg-primary text-white hover:bg-secondary' : 'join-item btn btn-sm'
+            }
+          >
+            {i}
+          </span>
+        );
+      }
+
+      if(totalPages!=page){
+      pageNumbers.push(
+        <span
+        className='join-item btn btn-sm btn-disabled'
+    
+      >
+        ....
+      </span>
+      )
+
+      pageNumbers.push(
+        <span
+        key={totalPages}
+        onClick={() => handlePage(totalPages)}
+        className={
+        totalPages === page ? 'join-item btn btn-sm bg-primary text-white hover:bg-secondary' : 'join-item btn btn-sm'
+        }
+      >
+        {totalPages}
+      </span>
+      )
     }
 
+  
+      return pageNumbers;
+    };
 
-    const analyticQuery = useQuery({queryKey:['transaction'], queryFn:  fetchData });
+  
+  
 
+    const handleTab = (value)=>{
+      setPage(1);
+      setCurrentTab(value);
+      // queryResult.refetch({ page:1, transactionType: 'current' });
 
-    useEffect(() => {
-        if (analyticQuery.isSuccess) {
-          setTransactionSuccess(() => [
-            ...analyticQuery.data.data['User List of succesful transaction yesterday'],
-          ]);
+    }
 
-          settableData(()=>[...analyticQuery.data.data['User List of succesful transaction yesterday']])
-        }
-      }, [analyticQuery.isSuccess, analyticQuery.data]);
-
+ 
 
 
 
@@ -132,17 +195,19 @@ export default function TransactionPage() {
     };
   
 
-  return analyticQuery.isLoading ? <Loader/>: (
+  return queryResult.isLoading ? <Loader/>: (
     <div className="w-full">
       {/* <p>TransactionPage</p> */}
+
+
 
       <div className="bg-white w-full p-4 rounded-sm   max-w-full bg-green-900 ">
        
 
-      <div className="flex flex-col bg-white gap-4 mt-2 h-[80vh] w-full  bg-red-900">
+      <div className="flex flex-col bg-white gap-2 mt-0 h-[75vh] w-full  bg-red-900">
         <div className="flex justify-between items-center">
           <h1>Transaction Record</h1>
-
+{/* 
           <div className="flex flex-row gap-3 items-center ">
 
             <div className=" bg-white gap-2  hidden md:flex  flex-row pl-2 items-center border  rounded-md">
@@ -194,7 +259,7 @@ export default function TransactionPage() {
                 </div>
                 </details> 
             </div>
-                         
+                          */}
         </div>
 
         <div className="flex gap-[25px] borber-b border-[#EAEAEA] border-b-[1px] self-start">
@@ -206,11 +271,11 @@ export default function TransactionPage() {
           Pending Approval
           </div>
 
-          <div onClick={()=>handleTab('approved')} className={currentTab=='approved'? activeTabCss : normalTabCss}>
+          <div onClick={()=>handleTab('payout')} className={currentTab=='payout'? activeTabCss : normalTabCss}>
           Approved
           </div>
 
-          <div onClick={()=>handleTab('rejected')} className={currentTab=='rejected'? activeTabCss : normalTabCss}>
+          <div onClick={()=>handleTab('error')} className={currentTab=='error'? activeTabCss : normalTabCss}>
           Rejected
           </div>
         </div>
@@ -222,7 +287,7 @@ export default function TransactionPage() {
                   <tr>
                     <th>No</th>
                     <th>Ref</th>
-                    <th>User</th>
+                    <th>Description</th>
                     <th>Amount</th>
                     <th>Transaction Type</th>
                     <th>Date</th>
@@ -233,16 +298,16 @@ export default function TransactionPage() {
                   {/* row 1 */}
 
                   {
-                    tableData.map((tran,index)=>{
+                   queryResult.isSuccess && queryResult.data?.docs.map((tran,index)=>{
 
                         return (
-                        <tr key={tran.TxRef} className="p-">
-                        <th>{index+1}</th>
-                        <td className="word-break p-[20px] text-[12px] text-textHead">{tran.TxRef}</td>
-                        <td className=" p-[10px] text-[14px] text-textHead">{tran.accountname}</td>
-                        <td className=" p-[10px] text-[14px] text-textHead">{tran.amount}</td>
-                        <td className=" p-[10px] text-[14px] text-textHead">{tran.transactionType}</td>
-                        <td className=" p-[10px] text-[14px] text-textHead">{new Date(tran.date).toDateString()}</td>
+                        <tr key={tran._id} className="p-">
+                        <th>{((page-1)*50)+(index+1)}</th>
+                        <td className="word-break p-[10px] text-[18px] text-textHead">{tran._id}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.description}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.amount}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.transactionType}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{new Date(tran.date).toDateString()}</td>
 
                       </tr>)
                     })
@@ -256,15 +321,10 @@ export default function TransactionPage() {
             </div>
 
             <div className="join my-2">
-  <button className="join-item btn btn-sm bg-primary text-white hover:bg-secondary">1</button>
-  <button className="join-item btn btn-sm text-primary"> 2</button>
-  <button className="join-item btn btn-sm text-primary"> 3</button>
-  <button className="join-item btn btn-sm text-primary"> 4</button>
+            {queryResult.isSuccess && renderPageNumbers()}
+          </div>
 
-  <button className="join-item btn btn-sm btn-disabled">...</button>
-  <button className="join-item btn btn-sm text-primary">99</button>
-  <button className="join-item btn btn-sm text-primary">100</button>
-</div>
+
       </div>
     </div>
   );

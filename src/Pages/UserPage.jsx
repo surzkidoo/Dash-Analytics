@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../Api/analytics";
 import Loader from "../Components/Loader";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
+import { fetchUser } from "../Api/user";
 
 export default function UserPage() {
 
@@ -19,19 +20,77 @@ export default function UserPage() {
 
 
 
-    const analyticQuery = useQuery({queryKey:['transaction'], queryFn:  fetchData });
+    const [page, setPage] = useState(1);
 
 
-    useEffect(() => {
-        if (analyticQuery.isSuccess) {
-          setTransactionSuccess(() => [
-            ...analyticQuery.data.data['User List of succesful transaction yesterday'],
-          ]);
+   
+    const handlePage = (value)=>{
+      setPage(value);
+      // queryResult.refetch({ page:value, transactionType: currentTab });
+  
+     }
+   
 
-          settableData(()=>[...analyticQuery.data.data['User List of succesful transaction yesterday']])
+    const queryResult = useQuery({
+      queryKey: ['userData', { page: page }],
+      queryFn: () => fetchUser(page),
+      keepPreviousData: true,
+    });
+
+    const renderPageNumbers = () => {
+      const totalPages = queryResult.data.totalPages;
+      const visiblePages = 5; // Number of visible page numbers at a time
+      const halfVisiblePages = Math.floor(visiblePages / 2);
+  
+      let startPage = Math.max(1, page - halfVisiblePages);
+      let endPage = Math.min(totalPages, startPage + visiblePages - 1);
+  
+      if (endPage - startPage + 1 < visiblePages) {
+        startPage = Math.max(1, endPage - visiblePages + 1);
+      }
+  
+      const pageNumbers = [];
+  
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(
+          <span
+            key={i}
+            onClick={() => handlePage(i)}
+            className={
+            i === page ? 'join-item btn btn-sm bg-primary text-white hover:bg-secondary' : 'join-item btn btn-sm'
+            }
+          >
+            {i}
+          </span>
+        );
+      }
+
+      if(totalPages!=page){
+      pageNumbers.push(
+        <span
+        className='join-item btn btn-sm btn-disabled'
+    
+      >
+        ....
+      </span>
+      )
+
+      pageNumbers.push(
+        <span
+        key={totalPages}
+        onClick={() => handlePage(totalPages)}
+        className={
+        totalPages === page ? 'join-item btn btn-sm bg-primary text-white hover:bg-secondary' : 'join-item btn btn-sm'
         }
-      }, [analyticQuery.isSuccess, analyticQuery.data]);
+      >
+        {totalPages}
+      </span>
+      )
+    }
 
+  
+      return pageNumbers;
+    };
 
 
 
@@ -124,18 +183,18 @@ export default function UserPage() {
     };
   
 
-  return analyticQuery.isLoading ? <Loader/>: (
+  return queryResult.isLoading ? <Loader/>: (
     <div className="w-full">
       {/* <p>TransactionPage</p> */}
 
       <div className="bg-white w-full p-4 rounded-sm   max-w-full bg-green-900 ">
        
 
-      <div className="flex flex-col bg-white gap-4 mt-2 h-[80vh] w-full  bg-red-900">
+      <div className="flex flex-col bg-white gap-2  h-[75vh] w-full">
         <div className="flex justify-between items-center">
           <h1>User Record</h1>
 
-          <div className="flex flex-row gap-3 items-center ">
+          {/* <div className="flex flex-row gap-3 items-center ">
 
             <div className=" bg-white gap-2  hidden md:flex  flex-row pl-2 items-center border  rounded-md">
               <AiOutlineSearch size={20} className="text-slate-400" />
@@ -185,7 +244,7 @@ export default function UserPage() {
                    
                 </div>
                 </details> 
-            </div>
+            </div> */}
                          
         </div>
        
@@ -197,9 +256,11 @@ export default function UserPage() {
                     <th>No</th>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
                     <th>Balance</th>
-                    <th>Bank Name</th>
-                    <th>Register Date</th>
+                    <th>User Type</th>
+
 
                   </tr>
                 </thead>
@@ -207,16 +268,17 @@ export default function UserPage() {
                   {/* row 1 */}
 
                   {
-                    tableData.map((tran,index)=>{
+                   queryResult.isSuccess && queryResult.data?.docs.map((tran,index)=>{
 
                         return (
-                        <tr key={tran.TxRef} className="p-1">
-                        <th>{index+1}</th>
-                        <td className="word-break">{tran.userId}</td>
-                        <td>{tran.accountname}</td>
-                        <td>{tran.afterBalance}</td>
-                        <td>{tran.bankname}</td>
-                        <td>{new Date(tran.date).toDateString()}</td>
+                        <tr key={tran._id} className="p-1">
+                        <th>{((page-1)*50)+(index+1)}</th>
+                        <td className="word-break  p-[10px] text-[18px] text-textHead">{tran._id}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.fullname}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.email}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.phoneNumber}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.balance}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead">{tran.userType}</td>
 
                       </tr>)
                     })
@@ -228,7 +290,9 @@ export default function UserPage() {
             </div> 
             </div>
 
-        
+            <div className="join my-2">
+            {queryResult.isSuccess && renderPageNumbers()}
+          </div>
       </div>
     </div>
   );
