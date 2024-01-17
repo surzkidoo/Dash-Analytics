@@ -16,6 +16,7 @@ import Reset from "./Pages/Reset";
 import ActivationPage from "./Pages/ActivationPage";
 import NewPassword from "./Pages/NewPassword";
 import chat from './assets/chat.svg'
+import AdsPage from "./Pages/AdsPage";
 
 
 const queryClient = new QueryClient()
@@ -33,12 +34,12 @@ function App() {
           <Route path="/activate-account" index element={<ActivationPage/>} />
           <Route path="/new-password" index element={<NewPassword/>} />
 
-
-
           <Route element={<ProtectedRoute  element={<DashbaordTemplete/>} />}>
           <Route path="/"   element={<DashbaordPage/>} />
           <Route path="dashboard/transaction"   element={<TransactionPage/>} />
           <Route path="dashboard/user"   element={<UserPage/>} />
+          <Route path="dashboard/ads"   element={<AdsPage/>} />
+
 
 
           </Route>

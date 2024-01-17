@@ -8,11 +8,12 @@ import {
   AiOutlineUpload,
   AiOutlineUser,
 } from "react-icons/ai";
-import { BsDashSquare, BsPower, BsSendArrowUp } from "react-icons/bs";
+import { Bs1Circle, BsDashSquare, BsFillBookFill, BsPower, BsSendArrowUp } from "react-icons/bs";
 import { TbTransferIn, TbTransferVertical } from "react-icons/tb";
 import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logo-dash.png';
+import { FaAdversal } from "react-icons/fa";
 
 export default function Sidebar(props) {
   const activeLink =
@@ -79,6 +80,17 @@ export default function Sidebar(props) {
             </div>
 
             <div className="text-[16px] font-semibold ">Users</div>
+          </NavLink>
+
+          <NavLink
+            to="/dashboard/ads"
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
+            <div>
+              <Bs1Circle size={28} />
+            </div>
+
+            <div className="text-[16px] font-semibold ">Ads</div>
           </NavLink>
 
           <NavLink
