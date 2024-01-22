@@ -57,6 +57,10 @@ function SigninPage() {
           if(result){
             if(result.data.data){
               console.log(result.data);
+              // if(result.data){
+              //   setError({message:`Please Fill In Your Correct Detail`})
+              //   return 
+              // }
               dispatch(setUser(result.data))
               navigate('/');
               return
@@ -91,7 +95,7 @@ function SigninPage() {
   return (
     <div className='flex'>
     <div className=' bg-bgform flex-[1] flex hidden md:flex  items-center'>
-      <img src={logo} alt="" className='w-full' srcset="" />
+      <img src={logo} alt="" className='w-full'  />
     </div>
     <div className="flex w-full items-center flex-[4] justify-center mt-0 min-h-screen overflow-hidden bg-pageBg ">
     {mutation.isPending && <Loader/>} 

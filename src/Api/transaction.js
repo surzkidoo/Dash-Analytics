@@ -1,10 +1,8 @@
-// api/transaction.js
-
 import axios from 'axios';
 
 const fetchTransaction = async (page, transactionType) => {
   try {
-    const response = await axios.get(`http://localhost:3000/transactions?page=${page}&transactionType=${transactionType}`);
+    const response = await axios.get(`/trx/api/v2/transactions?page=${page}&transactionType=${transactionType}`);
     return response.data;
   } catch (error) {
     console.error(error);

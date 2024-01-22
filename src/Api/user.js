@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const fetchUser = async (page) => {
   try {
-    const response = await axios.get(`http://localhost:3000/user?page=${page}`);
+    const response = await axios.get(`/users/api/v2/users?page=${page}`);
     return response.data;
   } catch (error) {
     console.error(error);
