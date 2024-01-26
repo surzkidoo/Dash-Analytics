@@ -53,14 +53,14 @@ function SigninPage() {
         try {
           await validationSchema.validate(formData, { abortEarly: false });
           let result = await mutation.mutateAsync(formData);
-          
+          console.log(result)
           if(result){
             if(result.data.data){
               console.log(result.data);
-              // if(result.data){
-              //   setError({message:`Please Fill In Your Correct Detail`})
-              //   return 
-              // }
+              if(!result.data.data.role=="admin"){
+                setError({message:`You are not an admin`})
+                return 
+              }
               dispatch(setUser(result.data))
               navigate('/');
               return

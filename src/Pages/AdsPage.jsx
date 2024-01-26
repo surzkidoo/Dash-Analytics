@@ -4,7 +4,8 @@ import { changeStatus, fetchData } from "../Api/getAds";
 import Loader from "../Components/Loader";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 import { fetchUser } from "../Api/user";
-import { MdMore } from "react-icons/md";
+import { MdMore, MdOutlineChangeCircle } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 export default function AdsPage() {
 
@@ -40,18 +41,6 @@ export default function AdsPage() {
     keepPreviousData: true,
   });
 
-
-   const handeStatusChange = async (id,e) =>{
-    console.log('value',{id,s:e.target.value})
-
-    let result2 = await mutation.mutateAsync({key:id,status:e.target.value});
-    if(mutation.isSuccess){
-      queryResult.refetch()
-      e.target.value = result2.data.status;
-
-    }
-    console.log('fromse',result2);
-   }
 
  
 
@@ -140,6 +129,21 @@ const handleSearch = (e) => {
 };
 
 
+const changeStatuss = async (e) =>{
+  e.preventDefault()
+  console.log(e.target[0].value);
+ let content =   e.target[0].value
+ let status = e.target[1].value
+ let id = e.target[2].value
+
+ await mutation.mutateAsync({id:id,status:status,content:content});
+    if(mutation.isSuccess){
+      queryResult.refetch()
+      alert('Status Change to '+ status + " SuccessFully")
+    }
+
+}
+
   return  queryResult.isLoading ? <Loader/>: (
     <div className="w-full">
       {/* <p>TransactionPage</p> */}
@@ -224,15 +228,67 @@ const handleSearch = (e) => {
                return (<tr key={index} className="p-1">
                   <th>{index+1}</th>
                  
-                  <td className=" p-[5px] text-[18px] text-textHead">{ad.userid.fullname}</td>
+                  <td className=" p-[5px] text-[18px] text-textHead">{ad?.userid?.fullname}</td>
                   <td className=" p-[5px] text-[18px] text-textHead">{ad.headline}</td>
                   <td className=" p-[5px] text-[18px] text-textHead">{ad.description}</td>
-                  <td className=" p-[5px] text-[18px] text-textHead"><select defaultValue={ad.status} onClick={(e)=>handeStatusChange(ad._id,e)}  className="select select-sm select-bordered ">
+                  <td className=" p-[5px] text-[18px] text-textHead flex flex-row gap-1 items-center">
+                    
+                    {ad.status}
+                    
+                    {/* <select defaultValue={ad.status} onClick={(e)=>handeStatusChange(ad._id,e)}  className="select select-sm select-bordered ">
                   <option value='deactivate'>DeActivated</option>
                     <option value='active' >Active</option>
                     <option value='Pending'>Pending</option>
 
-                  </select></td>
+                  </select> */}
+
+<button
+                        className="btn btn-sm bg-primary hover:bg-secondary w-[90px] text-xs outline-none text-white"
+                        onClick={() =>
+                          document.getElementById("my_modal_12"+index).showModal()
+                        }
+                      >
+                       Edit  <FaEdit/>
+                      </button>
+                      <dialog id={"my_modal_12"+index} className="modal">
+                        <div className="modal-box flex flex-col gap-2">
+                          <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                              ✕
+                            </button>
+                          </form>
+
+                      <form onSubmit={changeStatuss} className="flex gap-2 flex-col">
+                      <h1 className="font-bold shrink-0">Message</h1>
+
+<textarea name="content" id="" cols="30" rows="10" className="border w-full p-2 outline-none" placeholder="Message to be Mailed">
+
+</textarea>
+<h1 className="font-bold shrink-0">Status</h1>
+
+
+<select defaultValue={ad.status}   className="select w-full select-sm select-bordered ">
+<option value='deactivate'>DeActivated</option>
+<option value='active' >Active</option>
+<option value='pending'>Pending</option>
+<input type="hidden" name="id" value={ad._id} />
+
+
+</select>
+
+<button className="bg-primary btn hover:bg-secondary  outline-none  bottom-[10px] right-[10px] md:bottom-[48px] md:right-[48px] w-full  text-white flex items-center justify-center rounded-[5px]  gap-[12px]">
+  Send</button>
+                      </form>
+
+                  
+                         
+                          
+                       
+                        </div>
+                      </dialog>
+
+                  </td>
                   <td className=" p-[5px] text-[18px] text-textHead">{ad.type}</td>
                   <td className=" p-[5px] text-[18px] text-textHead">
                     <div className="flex flex-col gap-1">
@@ -252,12 +308,18 @@ const handleSearch = (e) => {
                               ✕
                             </button>
                           </form>
+                       
+                        {
+                          ad.type=="Video"?
+                          <video className="w-[80%] self-center h-[300px]" src={ad.imageUrl} controls></video>: <img
+                          src={ad.imageUrl}
+                          className="w-[50%] self-center bg-red-900"
+                          alt=""
+                        />
+                        }
 
-                          <img
-                            src="../ad-sample.png"
-                            className="w-[50%] self-center bg-red-900"
-                            alt=""
-                          />
+          
+                         
                           <h3 className="font-bold text-lg self-center text-center">
                             {ad.healine}
                           </h3>
@@ -338,31 +400,31 @@ const handleSearch = (e) => {
                          
                           <div className="flex gap-1.5 items-center">
                             <h1 className="font-bold">Full Name</h1>
-                            <div className="">{ad.userid.fullname}</div>
+                            <div className="">{ad.userid?.fullname}</div>
                           </div>
 
                           <div className="flex gap-1.5 items-center">
                             <h1 className="font-bold">Email</h1>
-                            <div className="">{ad.userid.email}</div>
+                            <div className="">{ad.userid?.email}</div>
                           </div>
 
                           <div className="flex gap-1.5 items-center">
                             <h1 className="font-bold">Phone Number</h1>
-                            <div className="">{ad.userid.phoneNumber}</div>
+                            <div className="">{ad.userid?.phoneNumber}</div>
                           </div>
 
                        
 
                           <div className="flex gap-1.5 items-center">
                             <h1 className="font-bold">CreatedAt</h1>
-                            <div className="">{Date(ad.userid.createdAt)}</div>
+                            <div className="">{Date(ad.userid?.createdAt)}</div>
                           </div>
 
                           
-                          <div className="flex gap-1.5 ">
+                          {/* <div className="flex gap-1.5 ">
                             <h1 className="font-bold">Address</h1>
                             <div className="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, voluptas!</div>
-                          </div>
+                          </div> */}
                        
                         </div>
                       </dialog>

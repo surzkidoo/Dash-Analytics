@@ -1,10 +1,12 @@
 // api/transaction.js
 
 import axios from 'axios';
+import axiosInstance  from "../axiosInstance";
+
 
 const fetchUser = async (page) => {
   try {
-    const response = await axios.get(`/users/api/v2/users?page=${page}`);
+    const response = await axiosInstance.get(`/users/api/v2/users?page=${page}`);
     return response.data;
   } catch (error) {
     console.error(error);

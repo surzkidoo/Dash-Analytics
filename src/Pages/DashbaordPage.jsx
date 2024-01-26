@@ -5,7 +5,7 @@ import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../Api/analytics";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../Components/Loader";
 import {
   AiFillCheckSquare,
@@ -26,9 +26,19 @@ import {
 
 
 import Summary from "../Components/Summary";
+import { createNotice, getNotice } from "../Api/notice";
 
 function DashbaordPage() {
   const analyticQuery = useQuery({ queryKey: ["data"], queryFn: fetchData });
+
+  const noticeQuery = useQuery({ queryKey: ["notice"], queryFn: getNotice });
+
+  const [newfile, setfile] = useState(null)
+
+  const mutation = useMutation({
+    mutationFn:createNotice
+  });
+
 
   // analyticQuery.isSuccess && console.log(analyticQuery.data?.result.map(item => [ new Date(item.date).getTime(), item.totalAmount]))
 
@@ -137,6 +147,30 @@ function DashbaordPage() {
   //   },
   // });
 
+  const handleNotice = (e)=>{
+    setfile(e.target.files[0]);
+    console.log(e.target.value)
+  }
+
+
+  const handleNoticeSubmit = async () => {
+    if(newfile==null){
+      alert('Select a file to upload')
+      return
+    }
+    const formData = new FormData();
+    formData.append('media', newfile)
+
+    let result2 = await mutation.mutateAsync(formData);
+    if(mutation.isSuccess){
+      noticeQuery.refetch();
+      console.log('notice Change to  new',result2)
+    }
+
+  }
+
+
+
   return analyticQuery.isLoading ? (
     <Loader />
   ) : (
@@ -202,6 +236,26 @@ function DashbaordPage() {
       
       </div>
 
+      <div className='flex gap-2 flex-col'>
+          <h1 className='page-title-text'>Notice Board</h1>
+          <p>This is a notice section for the App, You control what user see on the App Home Screen</p>
+
+          {
+            noticeQuery.data?.data[0].type==="Image"?
+              <img src={'http://localhost:5000/'+noticeQuery.data?.data[0].url.split('com/')[1]} className="w-[400px]" alt="" />:
+              <video controls className="w-[400px]" src={'http://localhost:5000/'+noticeQuery.data?.data[0].url.split('com/')[1]}></video>
+
+          }
+
+
+          <input type="file" name="media" onChange={handleNotice}  />
+
+          <button onClick={handleNoticeSubmit} className="bg-primary btn hover:bg-secondary  outline-none  bottom-[10px] right-[10px] md:bottom-[48px] md:right-[48px] w-[60px] md:w-[180px]  text-white flex items-center justify-center rounded-[5px] h-p[57px] gap-[12px]">
+          {!mutation.isPending? "Change Notice" : "Loading....."}</button>
+
+
+      </div>
+
       <div className="flex p-4 md:p-0  gap-4 flex-col md:flex-row flex-wrap">
         <div className="flex flex-col bg-white   border p-2 rounded-md items-center">
           <div className="flex flex-row w-full p-1  justify-between items-center">
@@ -263,6 +317,7 @@ function DashbaordPage() {
           />
         </div>
       </div>
+
     </div>
   );
 }
