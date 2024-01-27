@@ -242,8 +242,8 @@ function DashbaordPage() {
 
           {
             noticeQuery.data?.data[0].type==="Image"?
-              <img src={'http://localhost:5000/'+noticeQuery.data?.data[0].url.split('com/')[1]} className="w-[400px]" alt="" />:
-              <video controls className="w-[400px]" src={'http://localhost:5000/'+noticeQuery.data?.data[0].url.split('com/')[1]}></video>
+              <img src={noticeQuery.data?.data[0].url} className="w-[400px]" alt="" />:
+              <video controls className="w-[400px]" src={noticeQuery.data?.data[0].url}></video>
 
           }
 

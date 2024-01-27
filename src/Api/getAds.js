@@ -15,7 +15,7 @@ export const fetchData = async (page) => {
 
   export const changeStatus = async (formData) => {
     try {
-      const response = await axios.post(`http://localhost:5000/studio/api/v3/changeStatus`,formData);
+      const response = await axios.post(`/studio/api/v3/changeStatus`,formData);
       console.log(response.data);
       return response.data;
     } catch (error) {
