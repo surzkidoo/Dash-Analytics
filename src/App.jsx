@@ -17,6 +17,7 @@ import ActivationPage from "./Pages/ActivationPage";
 import NewPassword from "./Pages/NewPassword";
 import chat from './assets/chat.svg'
 import AdsPage from "./Pages/AdsPage";
+import UserPageDetail from "./Pages/UserPageDetail";
 
 
 const queryClient = new QueryClient()
@@ -38,6 +39,8 @@ function App() {
           <Route path="/"   element={<DashbaordPage/>} />
           <Route path="dashboard/transaction"   element={<TransactionPage/>} />
           <Route path="dashboard/user"   element={<UserPage/>} />
+          <Route path="dashboard/user/:id"   element={<UserPageDetail/>} />
+
           <Route path="dashboard/ads"   element={<AdsPage/>} />
 
 

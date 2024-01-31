@@ -14,8 +14,17 @@ import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logo-dash.png';
 import { FaAdversal } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { clearUser } from '../features/Authslice';
+
 
 export default function Sidebar(props) {
+  const dispatch = useDispatch()
+
+  const handleLogout = ()=>{
+    dispatch(clearUser())
+  }
+
   const activeLink =
     " flex gap-[16px]   flex items-center pl-[25px] p-2.5 mr-[25px] h-[60px]   bg-primary text-white font-semibold ";
   const normalLink =
@@ -93,6 +102,10 @@ export default function Sidebar(props) {
             <div className="text-[16px] font-semibold ">Ads</div>
           </NavLink>
 
+
+
+      
+
           <NavLink
             to="/sign-in"
             className={({ isActive }) => (isActive ? activeLink : normalLink)}
@@ -101,7 +114,7 @@ export default function Sidebar(props) {
               <BsPower size={28} />
             </div>
 
-            <div className="text-[16px] font-semibold ">Log out</div>
+            <div className="text-[16px] font-semibold " onClick={()=>{handleLogout()}}>Log out</div>
           </NavLink>
         </div>
 

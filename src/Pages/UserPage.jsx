@@ -4,6 +4,7 @@ import { fetchData } from "../Api/analytics";
 import Loader from "../Components/Loader";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 import { fetchUser } from "../Api/user";
+import { Link } from "react-router-dom";
 
 export default function UserPage() {
 
@@ -11,8 +12,8 @@ export default function UserPage() {
     const [tableData, settableData] = useState([])
 
     const startRef = useRef();
-    const enddRef = useRef()
-    const typeRef = useRef()
+    const enddRef = useRef();
+    const typeRef = useRef();
 
 
     const [sortDateType, setSortDateType] = useState('')
@@ -21,19 +22,26 @@ export default function UserPage() {
 
 
     const [page, setPage] = useState(1);
+    const [query, setquery] = useState(null);
+    const [input, setinput] = useState(null);
+
+
+
+    const SearchUser =()=>{
+      setquery(input);
+    }
 
 
    
     const handlePage = (value)=>{
-      setPage(value);
       // queryResult.refetch({ page:value, transactionType: currentTab });
-  
+      setPage(value)
      }
    
 
     const queryResult = useQuery({
-      queryKey: ['userData', { page: page }],
-      queryFn: () => fetchUser(page),
+      queryKey: ['userData', { page:page ,query:query }],
+      queryFn: () => fetchUser(page,query),
       keepPreviousData: true,
     });
 
@@ -105,20 +113,21 @@ export default function UserPage() {
   }
 
   const handleSearch = (e) => {
-    const searchTerm = e.target.value;
+    // const searchTerm = e.target.value;
+
+    setinput(e.target.value);
+
+    // if(!searchTerm){
+    //   settableData(transactionSuccess)
+    //   return
+    // }
 
 
-    if(!searchTerm){
-      settableData(transactionSuccess)
-      return
-    }
+    // const results = transactionSuccess.filter(item =>
+    //   item.userId.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
 
-
-    const results = transactionSuccess.filter(item =>
-      item.userId.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    settableData(results);
+    // settableData(results);
   };
 
  
@@ -193,13 +202,19 @@ export default function UserPage() {
       <div className="flex flex-col bg-white gap-2  h-[75vh] w-full">
         <div className="flex justify-between items-center">
           <h1>User Record</h1>
+          <div className="flex gap-2">  
+            <div className=" bg-white gap-2   md:flex  flex-row pl-2 items-center border  rounded-md">
+              <AiOutlineSearch size={20} className="text-slate-400" />
+              <input type="text" className="text-[16px] p-2 outline-none placeholder:text-[13px] h-[54px] shrink-0" value={input} onChange={handleSearch} placeholder="Search Record by Email, Phone Number & Name" />
+            </div>
+            
+            <button onClick={SearchUser} className="btn btn-sm bg-primary hover:bg-secondary h-[54px] w-[189px] w-[90px] text-md outline-none text-white">Go</button>
+          </div>
+        
 
           {/* <div className="flex flex-row gap-3 items-center ">
 
-            <div className=" bg-white gap-2  hidden md:flex  flex-row pl-2 items-center border  rounded-md">
-              <AiOutlineSearch size={20} className="text-slate-400" />
-              <input type="text" className="text-[14px] p-1.5 outline-none placeholder:text-[13px]" onChange={handleSearch} placeholder="Search Record by UserId" />
-            </div>
+           
 
 
             <details className="dropdown dropdown-end self-end">
@@ -259,7 +274,10 @@ export default function UserPage() {
                     <th>Email</th>
                     <th>PhoneNumber</th>
                     <th>Balance</th>
-                    <th>User Type</th>
+                    <th>Role</th>
+
+                    <th>Action</th>
+
 
 
                   </tr>
@@ -279,6 +297,7 @@ export default function UserPage() {
                         <td className=" p-[5px] text-[18px] text-textHead">{tran.phoneNumber}</td>
                         <td className=" p-[5px] text-[18px] text-textHead">{tran.balance}</td>
                         <td className=" p-[5px] text-[18px] text-textHead">{tran.userType}</td>
+                        <td className=" p-[5px] text-[18px] text-textHead"><Link className="btn btn-sm bg-primary hover:bg-secondary w-[120px] text-xs outline-none text-white" to={'/dashboard/user/'+tran._id}>View More</Link></td>
 
                       </tr>)
                     })

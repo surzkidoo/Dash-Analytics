@@ -11,6 +11,12 @@ export default function AdsPage() {
 
   const [transactionSuccess, setTransactionSuccess] = useState([])
   const [tableData, settableData] = useState([])
+  const [currentTab, setCurrentTab] = useState('all');
+
+
+  const activeTabCss= 'p-[8px] font-bold  text-textHead min-w-[60px] flex justify-center border-b border-b-[4px] border-primary';
+  const normalTabCss='p-[8px]  text-textHead min-w-[60px] flex justify-center';
+
 
   const startRef = useRef();
   const enddRef = useRef()
@@ -36,12 +42,17 @@ export default function AdsPage() {
 
 
    const queryResult = useQuery({
-    queryKey: ['AdsData', { page: page }],
-    queryFn: () => fetchData(page),
+    queryKey: ['AdsData', { page: page,currentTab:currentTab }],
+    queryFn: () => fetchData(page,currentTab),
     keepPreviousData: true,
   });
 
+  const handleTab = (value)=>{
+    setPage(1);
+    setCurrentTab(value);
+    // queryResult.refetch({ page:1, transactionType: 'current' });
 
+  }
  
 
   const renderPageNumbers = () => {
@@ -132,7 +143,7 @@ const handleSearch = (e) => {
 const changeStatuss = async (e) =>{
   e.preventDefault()
   console.log(e.target[0].value);
- let content =   e.target[0].value
+ let content =  e.target[0].value
  let status = e.target[1].value
  let id = e.target[2].value
 
@@ -206,7 +217,28 @@ const changeStatuss = async (e) =>{
             </div> */}
           </div>
 
+          <div className="flex gap-[25px] borber-b border-[#EAEAEA] border-b-[1px] self-start">
+          <div onClick={()=>handleTab('all')} className={currentTab=='all'? activeTabCss : normalTabCss}>
+            All
+          </div>
+
+          <div onClick={()=>handleTab('active')} className={currentTab=='active'? activeTabCss : normalTabCss}>
+          Active
+          </div>
+
+          <div onClick={()=>handleTab('pending')} className={currentTab=='pending'? activeTabCss : normalTabCss}>
+          Pending
+          </div>
+
+          <div onClick={()=>handleTab('deactivate')} className={currentTab=='deactivate'? activeTabCss : normalTabCss}>
+          Deactivated
+          </div>
+        </div>
+
           <div className="overflow-x-auto">
+
+            
+
             <table className="table table-xs">
               {/* head */}
               <thead>
@@ -245,12 +277,12 @@ const changeStatuss = async (e) =>{
 <button
                         className="btn btn-sm bg-primary hover:bg-secondary w-[90px] text-xs outline-none text-white"
                         onClick={() =>
-                          document.getElementById("my_modal_12"+index).showModal()
+                          document.getElementById("my_modal_122_"+index).showModal()
                         }
                       >
                        Edit  <FaEdit/>
                       </button>
-                      <dialog id={"my_modal_12"+index} className="modal">
+                      <dialog id={"my_modal_122_"+index} className="modal">
                         <div className="modal-box flex flex-col gap-2">
                           <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
@@ -296,12 +328,12 @@ const changeStatuss = async (e) =>{
                       <button
                         className="btn btn-sm bg-primary hover:bg-secondary w-[150px] text-xs outline-none text-white"
                         onClick={() =>
-                          document.getElementById("my_modal_1"+index).showModal()
+                          document.getElementById("my_modal_12_"+index).showModal()
                         }
                       >
                          Ad details
                       </button>
-                      <dialog id={"my_modal_1"+index} className="modal">
+                      <dialog id={"my_modal_12_"+index} className="modal">
                         <div className="modal-box flex flex-col gap-2">
                           <form method="dialog">
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">

@@ -1,9 +1,9 @@
 import axios from "axios";
 import axiosInstance  from "../axiosInstance";
 
-export const fetchData = async (page) => {
+export const fetchData = async (page,adType) => {
     try {
-      const response = await axiosInstance.get(`/studio/api/v3/requestAdAdmin?page=${page}`);
+      const response = await axiosInstance.get(`/studio/api/v3/requestAdAdmin?page=${page}&adType=${adType}`);
       console.log(response.data);
 
       return response.data;
